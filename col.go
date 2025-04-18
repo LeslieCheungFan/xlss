@@ -11,7 +11,7 @@ import (
 	yymmdd "github.com/extrame/goyymmdd"
 )
 
-//content type
+// content type
 type contentHandler interface {
 	String(*WorkBook) []string
 	FirstCol() uint16
@@ -63,7 +63,8 @@ func (xf *XfRk) String(wb *WorkBook) string {
 					strings.Contains(formatterLower, "m.y") ||
 					strings.Contains(formatterLower, "d.y") ||
 					strings.Contains(formatterLower, "h:") ||
-					strings.Contains(formatterLower, "д.г") {
+					strings.Contains(formatterLower, "д.г") ||
+					strings.Contains(formatter.str, "0_") {
 					//If format contains # or .00 then this is a number
 					return xf.Rk.String()
 				} else {
